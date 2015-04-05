@@ -32,12 +32,12 @@ public class Main {
 			service=Executors.newFixedThreadPool(p);
 			for(int i=0;i<p;i++)
 				service.execute(new Counter(i));
-			service.shutdown();
 			try {
-				service.awaitTermination(100 , TimeUnit.SECONDS);
+				service.awaitTermination(5 , TimeUnit.SECONDS);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
+			service.shutdown();
 		}
 		System.out.println("SUM= "+sum);
 		System.out.println("Main ended");
